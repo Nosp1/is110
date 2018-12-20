@@ -11,7 +11,7 @@
  */
 public class Picture
 {
-    private Square wall;
+    private Square wall;        // hallgeir 
     private Square window;
     private Triangle roof;
     private Circle sun;
