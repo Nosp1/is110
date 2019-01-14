@@ -26,8 +26,7 @@ public class LottoRekke
     }
 
     /**
-     * Picks one number
-     * 
+     * @return returnerer ett tall
      */
     public int selectNumber()
     { int newNumber = generator.nextInt(max);
@@ -35,8 +34,8 @@ public class LottoRekke
     }
     
     /**
-     * Check if this number is valid
-     * 
+     * @return true hvis det er et nytt, dvs unikt tall vi har trukket
+     * @param oneNumber er det nye tallet som er trukket
      */
     public boolean isValid(int oneNumber)
     {
@@ -50,14 +49,13 @@ public class LottoRekke
 
     /**
      * Will add one figure to the arraylist
-     * 
+     * Trekker tall, til vi har fått et nytt tall, legger dette inn i lista. 
      */    
     public void pickOneNumber()
     {
         int number = selectNumber();
         boolean valid = true; 
         boolean numberAdded = false;
-        
         while (numberAdded == false)
             {   if (isValid(number))
                     {   rekke[tilNaa] = number;
@@ -71,7 +69,7 @@ public class LottoRekke
     
     
     /**
-     * Make one row, that is select 7 numbers, one Lotto row
+     * Genererer en rad, dvs en lottorad, med 7 unike tall. 
      * 
      */
     public void generateOneRow()
@@ -80,7 +78,10 @@ public class LottoRekke
         {   pickOneNumber();
         }    
     }    
-    
+
+    /**
+     *  Skriver ut en lottoRad
+     */
     public void printOneRow()
     {   int teller = 0;
         System.out.println();
@@ -90,7 +91,11 @@ public class LottoRekke
         }
     }
     
-    
+
+    /**
+     * @return returnerer ett tall fra lottorekka
+     * @param i angir hvilket tall
+     */
     public int getOneNumber(int i)
     {
         int oneNumber;
@@ -98,7 +103,10 @@ public class LottoRekke
         return oneNumber;
     }
     
-    
+
+    /**
+     * Sorterer rekka. Bruker dobbel løkke for å få til dette.  
+     */
     public void sortRow()
     {   int loper = 0;          // alltid minst 1 mer enn current
         int current = 0;        // posisjonen som skal få "riktig" verdi
@@ -118,6 +126,10 @@ public class LottoRekke
         }       // slutt current
     }
     
+    /**
+     * 1: generer en rekke
+     * 2: Sorter rekka
+     */
     public void generateAndSortRow()
     {
         generateOneRow();

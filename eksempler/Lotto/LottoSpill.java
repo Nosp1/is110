@@ -2,11 +2,13 @@ import java.util.ArrayList;
 /**
  * class LottoSpill will 
  *      1: Generate the LOTTO row, as they do at Norsk Tiping
- *      2: Generate Lotto Rows
- *      3: Check how many rows to do in order to win
+ *      2: Generate one Lotto Row
+ *      3: Check one lotto row against the LOTTO row. 
+ *      4: Repeat 2 and 3 until there is a winner, 7 equal numbers
+ *      5: Show how many rows to play in order to win
  * 
  * @author Hallgeir 
- * @version 150218
+ * @version 070119
  */
 public class LottoSpill
 {
@@ -15,26 +17,33 @@ public class LottoSpill
 
     /**
      * Constructor for objects of class LottoSpill
+     * Genererer vinnerrekka. 
      */
     public LottoSpill()
     {
         vinnerRekka = new LottoRekke();
         enRekke = new ArrayList<LottoRekke>();
         generateWinningRow();
+        playGame();
         
     }
 
     /**
-     * 
-     * 
+     *  Denne metoden er i klassen LottoRekke, trekker 7 unike tall
+     *  og sorter disse. Dette er vinnerrekka.
      */
     public void generateWinningRow()
     {
          vinnerRekka.generateAndSortRow();
     }
     
-    
-    public boolean newRowAndCheck()
+    /**
+     * @return returnerer true hvis 7 rette, false ellers
+     * Generere EN lottorekke, og sjekker denne mot vinnerrekka. 
+     * Returnerer false hvis IKKE 7 rette. 
+     * private fordi dette er en hjelpemetode
+     */
+    private boolean newRowAndCheck()
     {
         LottoRekke newRow =new LottoRekke();
         newRow.generateAndSortRow();
@@ -45,8 +54,17 @@ public class LottoSpill
         return winner;
     }
     
-    public boolean checkTwoRows(LottoRekke newRow)
+    /**
+     * @param newRow er den nye rekka, sjekkes mot vinnerrekka
+     * @return returnerer true hvis to like rekker, false ellers
+     * Sjekker to sorterte rekker.
+     * returnerer false hvis ett eller flere avvik mellom de to. 
+     * private fordi dette er en hjelpemetode
+     */
+    private boolean checkTwoRows(LottoRekke newRow)
     {
+        //PS: Kanskje heller ha en metode i LottoRekke, nesten som en equals metode. 
+        
         int teller = 0;
         boolean lik = true; 
         
@@ -59,7 +77,12 @@ public class LottoSpill
         
         return lik;
     }
-    
+
+    /**
+     * @return antall lottorekker for å kåre en vinner
+     * Dette er hovedmetoden for ETT spill, trekker lottorekker inntil vi 
+     * får 7 rette. 
+     */
     public int playGame()
     {
         int noOfRows =0;
@@ -75,13 +98,24 @@ public class LottoSpill
         return noOfRows;
     }
  
-    
-     public void printWinner(int noOfRows)
+    /**
+     * @param antall rekker for å vinne 
+     * Metode for utskrift, for å angi hvor mange rekker som måtte til for
+     * å få en vinner.
+     */
+     private void printWinner(int noOfRows)
      {
          System.out.println("Congratulations  ");
          System.out.println("Number of rows: " +noOfRows);
      }
      
+     /**
+      *     @param noOfGames : antall spill som skal simuleres
+      *     @return Gjennomsnittlig antall rekker for å vinne, basert på noOfGames spill
+      *     Metode for å simulere lotto over flere uker, der vi utifra EN vinnerrekke
+      *     generer inntil vi har en vinner. Dette gjentar vi noOfGames ganger.
+      *     
+      */
      public int manyGames(int noOfGames)
      {
          int counter =0;
@@ -103,6 +137,7 @@ public class LottoSpill
       * @param forventetAlder er hvor lenge personen forventer å leve
       * @param grunnlag er hvor mange spill som brukes som grunnlag for å finne 
       *     snittet for å vinne
+      * Finner hvor mange rekker vi må spille for å sannsynligvis vinne.     
       */
      public void jegVilVinne(int alderNaa, int forventetAlder, int grunnlag)
      {
