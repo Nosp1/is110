@@ -3,7 +3,7 @@ import java.util.Random;
  * Class LottoRekke: Will give one out of 31 (or another limit
  * 
  * @author Hallgeir
- * @version 150217
+ * @version 190204
  */
 public class LottoRekke
 {
@@ -20,15 +20,15 @@ public class LottoRekke
     public LottoRekke()
     {
         rekke = new int[7];         // NB Plass til 7 tall, i indeks 0 til og med 6
-        generator = new Random();
+        generator = new Random();   // generator, PS, no seed
         //generator.setSeed(100);
         tilNaa = 0;
     }
 
     /**
-     * @return returnerer ett tall
+     * @return Random objektet returnerer ett tall
      */
-    public int selectNumber()
+    private int selectNumber()
     { int newNumber = generator.nextInt(max);
       return newNumber;    
     }
@@ -36,8 +36,10 @@ public class LottoRekke
     /**
      * @return true hvis det er et nytt, dvs unikt tall vi har trukket
      * @param oneNumber er det nye tallet som er trukket
+     * Logikken er: Anta nytt tall er unikt. Sjekk likhet mot alle tall trukket,
+     * og hvis likt med ett, blir valid = false, dvs IKKE et nytt unikt tall. 
      */
-    public boolean isValid(int oneNumber)
+    private boolean isValid(int oneNumber)
     {
         boolean valid = true; 
         for(int tallet : rekke) {
@@ -50,8 +52,11 @@ public class LottoRekke
     /**
      * Will add one figure to the arraylist
      * Trekker tall, til vi har fått et nytt tall, legger dette inn i lista. 
+     * Logikken er: 
+     *      - trekk ett tall
+     *      - gå i løkke inntil vi har trukket ett nytt unikt tall, og lagt dette til
      */    
-    public void pickOneNumber()
+    private void pickOneNumber()
     {
         int number = selectNumber();
         boolean valid = true; 
@@ -72,7 +77,7 @@ public class LottoRekke
      * Genererer en rad, dvs en lottorad, med 7 unike tall. 
      * 
      */
-    public void generateOneRow()
+    private void generateOneRow()
     {
         while (tilNaa <= 6)
         {   pickOneNumber();
@@ -106,24 +111,25 @@ public class LottoRekke
 
     /**
      * Sorterer rekka. Bruker dobbel løkke for å få til dette.  
+     * Logikken er: 
      */
-    public void sortRow()
-    {   int loper = 0;          // alltid minst 1 mer enn current
-        int current = 0;        // posisjonen som skal få "riktig" verdi
+    private void sortRow()
+    {   int ytre = 0;       // posisjonen som skal få "riktig" verdi
+        int indre = 0;      // alltid minst 1 mer enn ytre
         
-        while (current < 6)       // PS Den indre løkka går en ekstra opp
+        while (ytre < 6)   // PS ytre løkke sørger for riktig tall i pos = ytre
         {   int tmp;
-            loper = current +1;
-            while (loper <=6)
-                {   if (rekke[current] > rekke[loper] )
-                    {   tmp = rekke[loper];
-                        rekke[loper] = rekke[current];
-                        rekke[current] = tmp;
+            indre = ytre +1;
+            while (indre <=6)
+                {   if (rekke[ytre] > rekke[indre] )
+                    {   tmp = rekke[indre];
+                        rekke[indre] = rekke[ytre];
+                        rekke[ytre] = tmp;
                     }
-                    loper++;
-                }  // slutt loper while, finner riktig tall for en posisjon
-            current++;
-        }       // slutt current
+                    indre++;
+                }  // slutt indre while, finner riktig tall for en posisjon
+            ytre++;
+        }       // slutt ytre løkke
     }
     
     /**

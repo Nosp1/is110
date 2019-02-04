@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class LottoSpill
 {
     private LottoRekke vinnerRekka;
-    private ArrayList<LottoRekke> enRekke;
+    private LottoRekke enRekke;
 
     /**
      * Constructor for objects of class LottoSpill
@@ -22,10 +22,9 @@ public class LottoSpill
     public LottoSpill()
     {
         vinnerRekka = new LottoRekke();
-        enRekke = new ArrayList<LottoRekke>();
+        enRekke = new LottoRekke();
         generateWinningRow();
         playGame();
-        
     }
 
     /**
@@ -45,32 +44,31 @@ public class LottoSpill
      */
     private boolean newRowAndCheck()
     {
-        LottoRekke newRow =new LottoRekke();
-        newRow.generateAndSortRow();
-        // alleRekker.add(newRow);              // Stopper opp hvis for mange millioner i arraylista
-        
+        enRekke = new LottoRekke();     //oppretter nytt objekt, inlusib
+        enRekke.generateAndSortRow(); 
+              
         boolean winner; 
-        winner =checkTwoRows(newRow); // true means we have a winner
+        winner =checkTwoRows(); // true means we have a winner
         return winner;
     }
     
     /**
-     * @param newRow er den nye rekka, sjekkes mot vinnerrekka
+     * @param enRekke er den nye rekka, sjekkes mot vinnerrekka
      * @return returnerer true hvis to like rekker, false ellers
      * Sjekker to sorterte rekker.
      * returnerer false hvis ett eller flere avvik mellom de to. 
      * private fordi dette er en hjelpemetode
      */
-    private boolean checkTwoRows(LottoRekke newRow)
+    private boolean checkTwoRows()
     {
         //PS: Kanskje heller ha en metode i LottoRekke, nesten som en equals metode. 
         
         int teller = 0;
         boolean lik = true; 
-        
+               
         while (teller <=6)
         {
-            if (vinnerRekka.getOneNumber(teller) != newRow.getOneNumber(teller))
+            if (vinnerRekka.getOneNumber(teller) != enRekke.getOneNumber(teller))
                 lik = false;
             teller++;
         }

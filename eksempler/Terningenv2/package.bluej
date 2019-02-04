@@ -2,10 +2,10 @@
 dependency1.from=Spill
 dependency1.to=Terningen
 dependency1.type=UsesDependency
-editor.fx.0.height=833
-editor.fx.0.width=1302
-editor.fx.0.x=-6
-editor.fx.0.y=-6
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
 objectbench.height=124
 objectbench.width=763
 package.divider.horizontal=0.6
