@@ -1,2 +1,15 @@
 **/*.class
 **/*.ctxt
+/eksempler/nbproject/private/
+/eksempler/build/
+/eksempler/dist/
+/Numbers/nbproject/private/
+/NumbersNetBeans/nbproject/private/
+/NumbersNetBeans/build/
+/NumbersNetBeans/dist/
+/eksempler/NetBeansEx/NumbersNetBeansImproved/nbproject/private/
+/eksempler/NetBeansEx/NumbersNetBeansImproved/build/
+/eksempler/NetBeansEx/NumbersNetBeansImproved/dist/
+/Numbers190218/nbproject/private/
+/Numbers190218/build/
+/Numbers190218/dist/
