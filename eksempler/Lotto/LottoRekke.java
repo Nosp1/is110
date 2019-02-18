@@ -1,6 +1,6 @@
 import java.util.Random;
 /**
- * Class LottoRekke: Will give one out of 31 (or another limit
+ * Class LottoRekke:  
  * 
  * @author Hallgeir
  * @version 190204
@@ -27,9 +27,11 @@ public class LottoRekke
 
     /**
      * @return Random objektet returnerer ett tall
+     * verdier 0 til max-1
+     * max er høyeste lovlige lotto tall. 
      */
     private int selectNumber()
-    { int newNumber = generator.nextInt(max);
+    { int newNumber = generator.nextInt(max) +1;
       return newNumber;    
     }
     

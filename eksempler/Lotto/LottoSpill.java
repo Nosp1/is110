@@ -66,10 +66,12 @@ public class LottoSpill
         int teller = 0;
         boolean lik = true; 
                
-        while (teller <=6)
+        while (teller <=6  && (lik))
         {
             if (vinnerRekka.getOneNumber(teller) != enRekke.getOneNumber(teller))
-                lik = false;
+               { lik = false;
+                
+                }
             teller++;
         }
         
