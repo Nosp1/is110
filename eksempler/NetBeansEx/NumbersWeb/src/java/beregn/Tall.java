@@ -53,7 +53,7 @@ public class Tall extends HttpServlet {
         // out.println("Tallet er " +antall);
         Kalkulator kalkulator;
         kalkulator = new Kalkulator(out, antall,valg);
-        
+        kalkulator.run();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

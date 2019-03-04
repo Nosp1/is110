@@ -35,7 +35,7 @@ public class Kalkulator {
         this.antall = antall; 
         this.valg = valg;
         skriver = new TallSkriver();
-        run();
+        //run();
     }    
     
     /*

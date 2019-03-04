@@ -41,7 +41,12 @@ public class HalloServlet extends HttpServlet {
             out.println("<body>");
             String navn;
             navn = request.getParameter("navn");
+            String valg = request.getParameter("valg");
             out.println("<h1> Velkommen : " +navn +"</h1>");
+            if (valg.contains("dame"))
+                out.println("Du får 20% lønnstillegg i år");
+            else out.println("Du får 5% lønnstillegg i år");
+            out.println("Verdien av valg er " +valg);
             out.println("</body>");
             out.println("</html>");
         }
