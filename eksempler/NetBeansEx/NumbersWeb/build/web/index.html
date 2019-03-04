@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lek med tall</title>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css.css">
+    </head>
+    <body>
+        <h1> Velkommen til lek med tall </h1>
+        
+          <div class="form"> 
+            <h1> Tall Partall Oddetall Primtall </h1>
+                
+         <form action="tall" method="post"> 
+       
+             <div class = "ledetekst"> Antall tall: </div>
+             <div class = "inn"> <input type="text" value="100" name = "antall"> </div>
+             
+                     
+             <br> 
+             <!-- Kan ha flere Submit knapper, og sjekke hvilken som IKKE 
+                  er NULL. Hvis klikket på blir verdien lik VALUE
+                  på SUBMIT knappen. Valgte derfor å heller ha samme navn på 
+                  SUBMIT knappen, heller sjekke på verdien av knappen, 
+                  som altså er VALUE
+             Write your comments here -->
+             <div class = "inn"> <input type="Submit" name="valg" value="Alle">  </div>
+             <br>
+             <div class = "inn"> <input type="Submit" name="valg" value="Par">  </div>
+             <br>
+             <div class = "inn"> <input type="Submit" name="valg" value="Odde">  </div>
+             <br>
+             <div class = "inn"> <input type="Submit" name="valg" value="Prim">  </div>
+                          
+        </form>
+                     
+        </div>
+    </body>
+</html>

@@ -60,4 +60,29 @@ public class Person
     {
         System.out.println(forNavn + " ; " + etterNavn);
     }
+    
+    public String getForNavn()
+    {
+        return forNavn;
+        
+        
+        /* Testutskrift
+         * 
+         * x|
+         * 
+         */
+        
+        
+        
+        /* Slutt testutskrift
+         * 
+         */
+    }
+    
+    public String getEtterNavn()
+    {
+        return etterNavn;
+    }
+    
+        
 }

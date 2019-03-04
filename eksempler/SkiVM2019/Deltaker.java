@@ -41,7 +41,7 @@ public class Deltaker
     
     public int findTime()
     {
-        int timeUsed = slutt - start; 
+        int timeUsed = 1 + slutt - start ; 
         return timeUsed;
     }
     
